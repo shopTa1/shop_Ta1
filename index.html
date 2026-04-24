@@ -118,11 +118,6 @@
       }
     }
 
-    /* تم إزالة صورة البروفايل بالكامل */
-    .no-avatar {
-      display: none;
-    }
-
     h1 {
       font-family: 'Orbitron', monospace;
       font-size: 2.5rem;
@@ -199,7 +194,6 @@
     .link-x:hover { color: #ffffff; text-shadow: 0 0 5px #aaa; border-color: #fff; }
     .link-discord:hover { color: #5865F2; text-shadow: 0 0 5px #5865F2; border-color: #5865F2; }
     .link-telegram:hover { color: #0088cc; text-shadow: 0 0 5px #0088cc; border-color: #0088cc; }
-    .link-xbox:hover { color: #107C10; text-shadow: 0 0 5px #107C10; border-color: #107C10; box-shadow: 0 0 20px #107C10; }
 
     footer {
       text-align: center;
@@ -279,40 +273,57 @@
     </div>
 
     <div class="links-grid">
-      <a href="https://instagram.com/zx6sq" target="_blank" class="neon-link link-instagram">
-        <i class="fab fa-instagram"></i> Instagram Private
-      </a>
+      <!-- Instagram Link -->
       <a href="https://instagram.com/shop_Ta1" target="_blank" class="neon-link link-instagram">
         <i class="fab fa-instagram"></i> Instagram Store
       </a>
-      <a href="https://www.facebook.com/61574327138771/" target="_blank" class="neon-link link-facebook">
-        <i class="fab fa-facebook-f"></i> Facebook Page
-      </a>
-      <a href="https://www.tiktok.com/@zx6sq" target="_blank" class="neon-link link-tiktok">
-        <i class="fab fa-tiktok"></i> TikTok
-      </a>
-      <a href="https://www.youtube.com/@AXUUY" target="_blank" class="neon-link link-youtube">
-        <i class="fab fa-youtube"></i> YouTube
-      </a>
+
+      <!-- WhatsApp Channel (القناة العامة) -->
       <a href="https://whatsapp.com/channel/0029Vb7hA164Spk9FWVuV53Q" target="_blank" class="neon-link link-whatsapp">
         <i class="fab fa-whatsapp"></i> WhatsApp Channel
       </a>
+
+      <!-- WhatsApp خاص بالمتجر STORE (الرابط الجديد المطلوب) -->
+      <a href="https://wa.me/966500000000?text=أهلاً%20أريد%20الاستفسار%20عن%20المنتجات" target="_blank" class="neon-link link-whatsapp">
+        <i class="fab fa-whatsapp"></i> واتساب STORE
+      </a>
+
+      <!-- Facebook Page -->
+      <a href="https://www.facebook.com/61574327138771/" target="_blank" class="neon-link link-facebook">
+        <i class="fab fa-facebook-f"></i> Facebook Page
+      </a>
+
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@zx6sq" target="_blank" class="neon-link link-tiktok">
+        <i class="fab fa-tiktok"></i> TikTok
+      </a>
+
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@AXUUY" target="_blank" class="neon-link link-youtube">
+        <i class="fab fa-youtube"></i> YouTube
+      </a>
+
+      <!-- Twitter (X) -->
       <a href="https://x.com/shop_Ta1" target="_blank" class="neon-link link-x">
         <i class="fab fa-twitter"></i> AXUUY Store (X)
       </a>
-      <a href="https://x.com/lS4BrI3C3I99362" target="_blank" class="neon-link link-x">
-        <i class="fab fa-twitter"></i> Private Account (X)
-      </a>
+
+      <!-- Discord -->
       <a href="https://discord.gg/ZTkuEPEQAU" target="_blank" class="neon-link link-discord">
         <i class="fab fa-discord"></i> Discord
       </a>
+
+      <!-- Telegram Main -->
       <a href="https://t.me/shop_Ta1" target="_blank" class="neon-link link-telegram">
-        <i class="fab fa-telegram"></i> Telegram
+        <i class="fab fa-telegram"></i> Telegram Shop
       </a>
-      <a href="https://account.xbox.com/ar-SA/Profile?gamertag=axuuy" target="_blank" class="neon-link link-xbox">
-        <i class="fab fa-xbox"></i> Xbox | AXUUY
+
+      <!-- Telegram Secondary (ZX6SQ) -->
+      <a href="https://t.me/ZX6SQ" target="_blank" class="neon-link link-telegram">
+        <i class="fab fa-telegram"></i> Telegram ZX6SQ
       </a>
     </div>
+
     <footer>
       <i class="fas fa-bolt"></i> NEON INTERFACE • جميع الروابط رسمية <i class="fas fa-music"></i>
     </footer>
@@ -356,13 +367,18 @@
           event.preventDefault();
           const targetUrl = this.getAttribute('href');
           
+          // Use current mouse position for portal burst effect
           let mouseX = window.innerWidth / 2;
           let mouseY = window.innerHeight / 2;
+          if (event.clientX && event.clientY) {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+          }
           
           portalDiv.style.left = mouseX + 'px';
           portalDiv.style.top = mouseY + 'px';
           portalDiv.classList.remove('portal-active');
-          void portalDiv.offsetWidth;
+          void portalDiv.offsetWidth; // force reflow
           portalDiv.classList.add('portal-active');
           
           setTimeout(() => {
